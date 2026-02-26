@@ -1,301 +1,259 @@
-# Multi-Channel Revenue & Margin Intelligence System  
-### Turning e-commerce data into strategic profit decisions.
+# Revenue & Margin Intelligence System
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)  
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)  
-![SQL](https://img.shields.io/badge/SQL-PostgreSQL-orange.svg)  
-![Financial Modeling](https://img.shields.io/badge/Financial_Modeling-Excel-green.svg)
+Revenue growth does not guarantee profitability.
 
----
+This project is a CFO-oriented margin intelligence framework designed to convert fragmented sales exports into structured profitability control at SKU × Channel level.
 
-## Business Context — The Margin Illusion
+It focuses not on revenue reporting — but on contribution margin preservation and capital discipline.
 
-Revenue growth does not equal profitability.
-
-Hybrid e-commerce brands (Amazon FBA + DTC) often:
-
-- Scale revenue without scaling contribution margin  
-- Misjudge channel economics  
-- Over-discount profitable SKUs  
-- Ignore hidden margin erosion from returns and ad spend  
-
-Most hybrid brands also suffer from **Channel Conflict**:
-
-- Amazon drives volume  
-- DTC drives margin  
-- Management decisions are made on blended revenue  
-
-This system isolates true channel economics to prevent strategic misallocation of capital.
+⚠️ This repository presents the strategic logic, accounting policy, and decision framework.
+The full automation engine and deployment layer are maintained privately.
 
 ---
 
-## System Architecture
+## Strategic Purpose
 
-The project is structured in four integrated intelligence layers.
+Most e-commerce operators track:
+- Revenue
+- Orders
+- ROAS
+- Topline growth
 
----
+Very few track:
+- Return-adjusted contribution margin
+- Channel-level fee drag
+- Shipping income distortion
+- SKU × channel structural decay
+- Hidden negative unit economics
 
-### 1. Data Architecture Layer (Python)
-
-**Objective:** Structured dataset generation and preparation.
-
-Location:
-```
-src/data_pipeline.py
-```
-
-Generates:
-- SKU Master dataset  
-- Channel Cost model  
-- Sales Orders dataset  
-- Clean CSV exports for SQL ingestion  
+This system is designed to close that gap.
 
 ---
 
-### 2. Profitability Engine (Financial Core)
+## Core Output: Decision-Driven Margin Control
 
-**Objective:** Compute true contribution economics.
+Each SKU × Channel combination is classified into:
 
-Location:
-```
-src/profitability_engine.py
-```
+- 🚀 SCALE — structurally strong contribution margin
+- ⚙️ OPTIMIZE — margin improvement opportunity
+- ⚠️ REVIEW — economically fragile / inconsistent
+- 🔴 KILL — capital-destructive configuration
 
-Calculates:
-- Net Revenue (return-adjusted)  
-- Total Variable Cost  
-- Contribution Margin (CM)  
-- CM per Unit  
-- CM %  
-- Channel-level P&L  
-
-Applies a strict **Margin Policy** (no double-counting logic).
+The goal is simple:
+Transform raw transaction data into actionable capital allocation decisions.
 
 ---
 
-### 3. Scenario & Sensitivity Modeling Layer
+## Financial Logic & Policy Discipline
 
-Location:
-```
-src/scenarios.py
-```
+The framework operates under explicit accounting rules:
 
-Objective: Stress-test contribution margin under variable market conditions.
+- EX-VAT margin calculations
+- Clear separation of actuals vs scenarios
+- Explicit handling of returns and cross-period effects
+- Net revenue definition including shipping income
+- Variable vs structural cost separation
+- Configurable contribution thresholds
 
-Provides:
+This ensures alignment with real P&L logic rather than marketing dashboards.
 
-- Price sensitivity simulation (±10%)
-- Advertising cost variation (±5pp)
-- Discount impact modeling
-- Contribution Margin elasticity analysis
-- Scenario-based decision comparison
-
-This layer allows management to evaluate:
-
-- How margin reacts to pricing strategy
-- Whether discount campaigns destroy value
-- If ad spend scaling is margin-accretive
-- Where breakeven thresholds sit
-
-Designed as a commercial decision-support engine, not just a financial calculator.
+See: `margin_policy.md`
 
 ---
 
-### 4. SQL Intelligence Layer (Forensics & Segmentation)
+## Analytical Depth
 
-Location:
-```
-sql/Q1_DDL.sql  
-sql/Q2_NTILE_Ranking.sql  
-sql/Q3_Margin_Leak.sql  
-sql/Q4_LAG_Revenue.sql  
-sql/Q5_Channel_PnL_View.sql  
-```
+The engine incorporates:
 
-Provides:
-- NTILE-based SKU segmentation (SCALE / OPTIMIZE / REVIEW / KILL)  
-- Margin Leak detection  
-- Week-over-Week revenue momentum (LAG)  
-- Channel-level profitability diagnostics  
+- SKU × Channel contribution diagnostics
+- Ranking & segmentation logic
+- Return-adjusted economic unit tracking
+- Channel P&L structuring
+- SQL-based financial forensics modules
 
-Designed for PostgreSQL deployment.
+This is not a visualization layer.
+It is a structured profitability engine.
 
 ---
 
-### 5. Executive Intelligence Layer (Decision Framework)
+## Current Implementation Stage
 
-Location:
-```
-src/executive_report.py
-```
+The system currently focuses on:
 
-Converts analytics into action:
-- Executive Margin Risk Memo  
-- Channel divergence summary  
-- Revenue-at-risk estimation  
-- Priority action matrix  
+- Data normalization
+- Contribution margin computation
+- Decision classification logic
+- Excel-based reporting layer
 
-This layer answers the critical question:
-
-> “So what should we do next?”
+A visual dashboard layer and automation interface are planned as future extensions.
 
 ---
 
-## Key Strategic Signals Captured
+## Who This Is Built For
 
-- Channel divergence in CM%  
-- High-revenue but low-margin SKU exposure  
-- Structural impact of return rates  
-- Discount sensitivity (Amazon vs DTC)  
-- Contribution margin volatility week-over-week  
-
----
-
-## Repository Structure
-
-```
-sku-margin-leak-engine/
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── sql/
-│   ├── Q1_DDL.sql
-│   ├── Q2_NTILE_Ranking.sql
-│   ├── Q3_Margin_Leak.sql
-│   ├── Q4_LAG_Revenue.sql
-│   └── Q5_Channel_PnL_View.sql
-│
-├── src/
-│   ├── data_pipeline.py
-│   ├── profitability_engine.py
-│   ├── scenarios.py
-│   ├── sql_generator.py
-│   └── executive_report.py
-│
-├── reports/
-│   ├── sample_executive_dashboard.xlsx
-│   └── sample_margin_memo.docx
-│
-├── config.json
-└── README.md
-```
+- Founders scaling DTC / Amazon brands
+- CFOs seeking margin visibility beyond topline KPIs
+- Commercial operators responsible for SKU portfolio decisions
+- Growth teams needing economic clarity before scaling spend
 
 ---
 
-## How to Run
+## Engagement Model
 
-1. Prepare raw datasets inside `/data/raw`
-2. Execute:
+### Margin Audit (Consulting Format)
 
-```bash
-python src/data_pipeline.py
-python src/profitability_engine.py
-python src/sql_generator.py
-python src/executive_report.py
-```
+1. Sales and cost exports are provided
+2. Engine processes SKU × Channel economics
+3. Structured decision matrix and executive summary delivered
 
-Outputs are generated in:
+### Future Roadmap
 
-```
-/data/processed
-/reports
-```
+- Dashboard visualization layer
+- API-based ad spend integration
+- Working capital diagnostics (DPO integration)
+- Automated executive memo generation
 
 ---
 
-## Margin Policy (Core Principle)
+## Technology Stack
 
-The system applies a strict, non-duplicated contribution model:
-
-```
-net_units    = units_sold - return_units
-net_revenue  = net_units × net_price
-COGS         applied to all units_sold
-Channel fees applied to net revenue / net units
-Return processing applied only to return_units
-```
+- Python (Pandas-based financial transformations)
+- SQL (window functions for contribution diagnostics)
+- Structured Excel reporting
+- Policy-driven financial configuration
 
 ---
 
-### Returns Accounting Philosophy
+## Author
 
-Returns are treated as:
+Developed by a commercial strategist with 15+ years of operational leadership experience,
+bridging operational execution with financial accountability.# Revenue & Margin Intelligence System
 
-- Revenue reversal on returned units  
-- Product cost absorbed (all units produced)  
-- Processing fee applied only to returned units  
+Revenue growth does not guarantee profitability.
 
-No double counting of COGS or channel fees.
+This project is a CFO-oriented margin intelligence framework designed to convert fragmented sales exports into structured profitability control at SKU × Channel level.
 
----
+It focuses not on revenue reporting — but on contribution margin preservation and capital discipline.
 
-### Shipping Treatment
-
-The system supports two shipping models:
-
-**1. Paid Shipping (DTC)**  
-- Shipping income is included in net revenue  
-- Logistics cost is modeled as a variable cost  
-- Net impact reflected in CM  
-
-**2. Free Shipping**  
-- No shipping income recorded  
-- Fulfillment and logistics remain variable costs  
-
-This prevents artificial margin distortion between Amazon FBA and DTC.
+⚠️ This repository presents the strategic logic, accounting policy, and decision framework.
+The full automation engine and deployment layer are maintained privately.
 
 ---
 
-## Assumptions & Scope
+## Strategic Purpose
 
-- All figures are **EX-VAT**  
-- Fixed costs excluded (contribution margin model)  
-- Inventory valuation at standard cost  
-- Working capital not included in CM calculation (handled separately)  
+Most e-commerce operators track:
+- Revenue
+- Orders
+- ROAS
+- Topline growth
 
----
+Very few track:
+- Return-adjusted contribution margin
+- Channel-level fee drag
+- Shipping income distortion
+- SKU × channel structural decay
+- Hidden negative unit economics
 
-## Strategic Use Cases
-
-This framework is suitable for:
-
-- Amazon sellers managing multi-SKU portfolios  
-- DTC brands optimizing contribution economics  
-- Operators preparing for fundraising  
-- Founders validating channel profitability before scaling  
-- CFO-level margin diagnostics  
+This system is designed to close that gap.
 
 ---
 
-## Why This Is Different
+## Core Output: Decision-Driven Margin Control
 
-Most dashboards show revenue.  
-This system diagnoses **profit structure**.
+Each SKU × Channel combination is classified into:
 
-It identifies:
+- 🚀 SCALE — structurally strong contribution margin
+- ⚙️ OPTIMIZE — margin improvement opportunity
+- ⚠️ REVIEW — economically fragile / inconsistent
+- 🔴 KILL — capital-destructive configuration
 
-- Structural margin failure  
-- Channel fee asymmetry  
-- Return-driven erosion  
-- Discount sensitivity imbalance  
-
----
-
-## Roadmap
-
-Planned extension:
-
-- Power BI Executive Dashboard  
-- Scenario sensitivity modeling  
-- Cash lock diagnostics  
-- Automated anomaly alerts  
+The goal is simple:
+Transform raw transaction data into actionable capital allocation decisions.
 
 ---
 
-## Positioning
+## Financial Logic & Policy Discipline
 
-This is not a generic sales dashboard.
+The framework operates under explicit accounting rules:
 
-It is a structured contribution-margin control framework built for real-world commercial decision-making.
+- EX-VAT margin calculations
+- Clear separation of actuals vs scenarios
+- Explicit handling of returns and cross-period effects
+- Net revenue definition including shipping income
+- Variable vs structural cost separation
+- Configurable contribution thresholds
+
+This ensures alignment with real P&L logic rather than marketing dashboards.
+
+See: `margin_policy.md`
+
+---
+
+## Analytical Depth
+
+The engine incorporates:
+
+- SKU × Channel contribution diagnostics
+- Ranking & segmentation logic
+- Return-adjusted economic unit tracking
+- Channel P&L structuring
+- SQL-based financial forensics modules
+
+This is not a visualization layer.
+It is a structured profitability engine.
+
+---
+
+## Current Implementation Stage
+
+The system currently focuses on:
+
+- Data normalization
+- Contribution margin computation
+- Decision classification logic
+- Excel-based reporting layer
+
+A visual dashboard layer and automation interface are planned as future extensions.
+
+---
+
+## Who This Is Built For
+
+- Founders scaling DTC / Amazon brands
+- CFOs seeking margin visibility beyond topline KPIs
+- Commercial operators responsible for SKU portfolio decisions
+- Growth teams needing economic clarity before scaling spend
+
+---
+
+## Engagement Model
+
+### Margin Audit (Consulting Format)
+
+1. Sales and cost exports are provided
+2. Engine processes SKU × Channel economics
+3. Structured decision matrix and executive summary delivered
+
+### Future Roadmap
+
+- Dashboard visualization layer
+- API-based ad spend integration
+- Working capital diagnostics (DPO integration)
+- Automated executive memo generation
+
+---
+
+## Technology Stack
+
+- Python (Pandas-based financial transformations)
+- SQL (window functions for contribution diagnostics)
+- Structured Excel reporting
+- Policy-driven financial configuration
+
+---
+
+## Author
+
+Developed by a commercial strategist with 15+ years of operational leadership experience,
+bridging operational execution with financial accountability.

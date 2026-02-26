@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Keep structure but ignore non-sample data
+data/**/*
+!data/raw/
+!data/raw/*.csv
+!data/raw/*Architecture*.xlsx
+
+!data/reports/
+!data/reports/sample_*.xlsx
+!data/reports/sample_*.docx
+!data/reports/sample_*.pdf
+
+!data/processed/
+!data/processed/sample_*.xlsx
+
+# Do NOT publish engine source
+src/
+*.py
+
+# Optional: do not publish big binaries unless sample
+*.zip
+*.7z
